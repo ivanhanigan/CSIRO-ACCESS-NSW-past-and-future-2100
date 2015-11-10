@@ -3,7 +3,7 @@
 library(raster)
 library(ncdf4)
 
-projdir <- "~/projects/Climate_Change_CSIRO_ACCESS"
+projdir <- "~/projects/CSIRO-ACCESS-NSW-past-and-future-2100"
 setwd(projdir)
 indir <- "data_provided"
 dir(indir)
@@ -28,7 +28,7 @@ r@data
 library(raster)
 library(ncdf4)
 
-projdir <- "~/projects/Climate_Change_CSIRO_ACCESS"
+projdir <- "~/projects/CSIRO-ACCESS-NSW-past-and-future-2100"
 setwd(projdir)
 indir <- "data_provided"
 dir(indir)
