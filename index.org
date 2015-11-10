@@ -34,8 +34,15 @@
   dev.off()
   r
   r@data
-  
-  
+#+end_src  
+*** COMMENT snip
+#+name:snip
+#+begin_src R :session *R* :tangle snip.R :exports none :eval no
+#### name:snip ####
+
+
+
+    
   # ncdf3
   #nc <- open.ncdf(file.path(indir, infile))
   #str(nc)
@@ -70,8 +77,15 @@
   dev.off()
   r
   r@data
-  
-  
+#+end_src  
+*** COMMENT snip
+#+name:snip
+#+begin_src R :session *R* :tangle snip.R :exports none :eval no
+#### name:snip ####
+
+
+
+    
   # snip
   ## str(nc)
   ## print(nc)
