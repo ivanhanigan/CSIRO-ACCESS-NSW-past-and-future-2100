@@ -1,0 +1,101 @@
+#+TITLE:CSIRO ACCESS 
+#+AUTHOR: Ivan Hanigan
+#+email: ivan.hanigan@anu.edu.au
+#+LaTeX_CLASS: article
+#+LaTeX_CLASS_OPTIONS: [a4paper]
+#+LATEX: \tableofcontents
+-----
+* intro
+* data
+*** COMMENT dat1 future
+#+name:dat1
+#+begin_src R :session *R* :tangle code/read_ncdf_dat1.R :exports none :eval no
+  #### name:dat1 ####
+  library(raster)
+  library(ncdf4)
+  
+  projdir <- "~/projects/Climate_Change_CSIRO_ACCESS"
+  setwd(projdir)
+  indir <- "data_provided"
+  dir(indir)
+  infile <- "NSW_pr_Amon_ACCESS1-3_rcp85_r1i1p1_200601-210012.nc"
+  
+  in_nc <- file.path(indir, infile)
+  
+  nc <- nc_open(in_nc)
+  nc
+  nc_close(nc)
+  par(mfrow = c(4,12))
+  for(i in 1:(12*4)){
+  r <- raster(in_nc, band = i)
+  plot(r)
+  title(i)
+  }
+  dev.off()
+  r
+  r@data
+  
+  
+  # ncdf3
+  #nc <- open.ncdf(file.path(indir, infile))
+  #str(nc)
+  
+  
+  
+#+end_src
+
+*** COMMENT dat2 historical
+#+name:dat1
+#+begin_src R :session *R* :tangle code/read_ncdf_dat1.R :exports none :eval no
+  #### name:dat2 ####
+  library(raster)
+  library(ncdf4)
+  
+  projdir <- "~/projects/Climate_Change_CSIRO_ACCESS"
+  setwd(projdir)
+  indir <- "data_provided"
+  dir(indir)
+  infile <- "NSW_pr_Amon_ACCESS1-3_historical_r1i1p1_185001-200512.nc"
+  in_nc <- file.path(indir, infile)
+  
+  nc <- nc_open(in_nc)
+  nc
+  nc_close(nc)
+  par(mfrow = c(2,6))
+  for(i in 1:12){
+  r <- raster(in_nc, band = i)
+  plot(r)
+  title(i)
+  }
+  dev.off()
+  r
+  r@data
+  
+  
+  # snip
+  ## str(nc)
+  ## print(nc)
+  ## vals <- ncvar_get(nc, varid="value")
+  
+  ## str(nc$var$time)
+  ## str(vals)
+  ## summary(vals)
+  ## nc.att <- nc$var$time$dim
+  ## xmin <- min(nc.att[[1]]$vals)
+  ## xmax <- max(nc.att[[1]]$vals)
+  ## ymin <- min(nc.att[[2]]$vals)
+  ## ymax <- max(nc.att[[2]]$vals)
+  
+  ## print(c(xmin,xmax))
+  ## print(c(ymin,ymax))
+  
+  ## r <- raster(t(vals),
+  ##             xmn=xmin, xmx=xmax,
+  ##             ymn=ymin, ymx=ymax)
+  ## #str(r)
+  ## plot(r)
+  # this looks terrible!
+  # and negative vals!
+  
+#+end_src
+
